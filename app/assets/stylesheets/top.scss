@@ -1,0 +1,24 @@
+// Place all the styles related to the top controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// top
+.top .header{
+  height: 55px;
+  border-bottom: 1px solid #c0c0c0;
+}
+.top .main .main_image{
+  width: 500px;
+  height: 500px;
+  margin-top: 100px;
+  margin-left: 475px;
+}
+.top .header h2{
+}
+.top .main{
+  height: 615px;
+  border-bottom: 1px solid #c0c0c0;
+}
+.top .footer{
+  height: 75px;
+}
