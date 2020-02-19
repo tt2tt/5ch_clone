@@ -4,7 +4,9 @@
   </div>
 
   <div class="main">
-    <%= image_tag 'main.jpg', class: 'main_image'%>
+    <%= link_to categories_path do %>
+      <%= image_tag 'main.jpg', class: 'main_image'%>
+    <% end %>
   </div>
 
   <div class="footer">
