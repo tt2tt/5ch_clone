@@ -6,3 +6,23 @@
     </div>
   <% end %>
 </div>
+
+<%= form_with(model: @board, local: true) do |f| %>
+
+<div class="board_category">
+  <%= f.label :category_id %>
+  <%= f.number_field :category_id %>
+</div>
+
+  <div class="board_title">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="board_content">
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
