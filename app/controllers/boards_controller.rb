@@ -10,9 +10,15 @@ class BoardsController < ApplicationController
     end
   end
 
+  def show
+    @board = Board.find(params[:id])
+    @response = Response.new
+    @responses = @board.responses
+  end
+
   def create
-    @board = current_user.boards.build(board_params)
 	  if current_user
+      @board = current_user.boards.build(board_params)
       if @board.save
         redirect_to categories_path
       else
