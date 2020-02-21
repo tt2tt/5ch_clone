@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_20_124705) do
+ActiveRecord::Schema.define(version: 2020_02_21_011427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "board_categories", force: :cascade do |t|
+    t.bigint "board_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_board_categories_on_board_id"
+    t.index ["category_id"], name: "index_board_categories_on_category_id"
+  end
 
   create_table "boards", force: :cascade do |t|
     t.string "title"
@@ -44,6 +53,8 @@ ActiveRecord::Schema.define(version: 2020_02_20_124705) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "board_categories", "boards"
+  add_foreign_key "board_categories", "categories"
   add_foreign_key "boards", "categories"
   add_foreign_key "boards", "users"
 end
