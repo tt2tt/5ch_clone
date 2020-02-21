@@ -1,6 +1,9 @@
 class BoardsController < ApplicationController
   def index
-    @boards = Board.all
-    # @board = Board.new
+    if params[:search]
+      @boards = Board.where(category_id: params[:search][:category_id])
+    else
+      @boards = Board.all
+    end
   end
 end
