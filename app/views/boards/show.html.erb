@@ -1,0 +1,26 @@
+<div class="responce_index">
+  <% if @responses[0] %>
+    <% count = 0 %>
+    <% @responses.each do |responce| %>
+      <% count += 1 %>
+      <%= responce.content %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="responce_form">
+  <%= form_with(model: @responce, local: true, url: responses_path) do |f| %>
+
+  <div class="hidden_value">
+    <%= f.hidden_field :board_id, value: @board.id%>
+    <%= f.hidden_field :response_number, value: "#{count}" %>
+  </div>
+
+  <div class="responce_title">
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
+</div>

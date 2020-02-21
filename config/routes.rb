@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   root to: 'top#top'
   get 'top/top'
   resources :categories, only: [:index]
-  resources :boards, only: [:index, :create]
+  resources :boards, only: [:index, :show, :create]
+  resources :responses, only: [:create]
 end

@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_02_21_020221) do
 
   create_table "responses", force: :cascade do |t|
     t.text "content"
+    t.integer "response_number"
     t.bigint "user_id"
     t.bigint "board_id"
     t.datetime "created_at", null: false
