@@ -28,5 +28,5 @@
 # Category.create(name: '生活')
 # Category.create(name: 'ネタ雑談')
 
-# Board.create(title: 'A', content: "", user_id: 1, category_id: 1)
-# Board.create(title: 'B', content: "", user_id: 1, category_id: 1)
+# Board.create(title: 'A', content: "", user_id: 1, category_ids: [1])
+# Board.create(title: 'B', content: "", user_id: 1, category_ids: [1])

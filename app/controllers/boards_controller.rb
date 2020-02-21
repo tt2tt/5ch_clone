@@ -1,7 +1,9 @@
 class BoardsController < ApplicationController
   def index
     if params[:search]
-      @boards = Board.where(category_id: params[:search][:category_id])
+      @category = Category.find(params[:search][:category_id])
+      # @boards = Board.where(category_id: params[:search][:category_id])
+      @boards = @category.boards
       @board = Board.new
     else
       @boards = Board.all
@@ -24,6 +26,6 @@ class BoardsController < ApplicationController
   private
 
 	def board_params
-	  params.require(:board).permit(:title, :content, :category_id)
+	  params.require(:board).permit(:title, :content, { category_ids: [] })
 	end
 end

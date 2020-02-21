@@ -28,10 +28,8 @@ ActiveRecord::Schema.define(version: 2020_02_21_011427) do
     t.string "title"
     t.text "content"
     t.bigint "user_id"
-    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_boards_on_category_id"
     t.index ["user_id"], name: "index_boards_on_user_id"
   end
 
@@ -55,6 +53,5 @@ ActiveRecord::Schema.define(version: 2020_02_21_011427) do
 
   add_foreign_key "board_categories", "boards"
   add_foreign_key "board_categories", "categories"
-  add_foreign_key "boards", "categories"
   add_foreign_key "boards", "users"
 end
