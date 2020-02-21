@@ -15,3 +15,13 @@
     <%= link_to "ログイン", new_user_session_path %>
   <% end %>
 </div>
+
+<div class="search">
+  <%= form_with(model: Board.new, url: boards_path, method: :get, local: true) do |f| %>
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+    <%= f.submit '検索', id: 'search_button' %>
+<% end %>
+</div>

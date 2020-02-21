@@ -5,6 +5,16 @@ class BoardsController < ApplicationController
       # @boards = Board.where(category_id: params[:search][:category_id])
       @boards = @category.boards
       @board = Board.new
+    elsif params[:board]
+      search_word = params[:board][:title]
+      search_by_boards1 = Board.where(['title LIKE ?', "%#{search_word}%"])
+      search_by_responses = Response.where(['content LIKE ?', "%#{search_word}%"])
+      search_ids = search_by_responses.pluck(:board_id).uniq
+      search_by_boards2 = Board.find(search_ids)
+      @boards = search_by_boards1 + search_by_boards2
+      @boards.uniq
+      # binding.pry
+      # @boards = Board.where(['title LIKE ?', "%#{search_word}%"])
     else
       @boards = Board.all
     end
