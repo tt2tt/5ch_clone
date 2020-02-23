@@ -1,3 +1,44 @@
 // Place all the styles related to the categories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// index
+.sub_search{
+  margin-top: 20px;
+}
+.sub_search input[type="submit"]{
+  width: 120px;
+}
+.search_button{
+  margin-bottom: 50px;
+}
+.category_index{
+  position: relative;
+}
+.category_name{
+  margin: 5px 0px;
+}
+.guide{
+  position: absolute;
+  top: 40px;
+  left: 750px;
+}
+.guide .greeting1{
+  margin-left: -30px;
+}
+.guide .greeting2{
+  margin-left: -150px;
+}
+.guide input[type="text"]{
+  height: 20px;
+  width: 240px;
+  margin-left: -30px;
+}
+.guide input[type="submit"]{
+  width: 100px;
+}
+.nav{
+  position: absolute;
+  top: 340px;
+  left: 760px;
+}

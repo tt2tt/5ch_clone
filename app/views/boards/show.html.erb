@@ -1,26 +1,49 @@
-<div class="responce_index">
-  <% if @responses[0] %>
-    <% count = 0 %>
-    <% @responses.each do |responce| %>
-      <% count += 1 %>
-      <%= responce.content %>
+<div class="back_gray">
+  <div class="above">
+    <div class="title">
+      <%= link_to '5chクローン', root_path %>
+    </div>
+    <div class="search">
+      <%= form_with(model: Board.new, url: boards_path, method: :get, local: true) do |f| %>
+        <%= f.text_field :title %>
+        <%= f.submit 'スレタイ検索', class: 'search_button' %>
     <% end %>
+    </div>
+  </div>
+
+  <div class="responce_index">
+    <h2><%= @board.title %></h2>
+    <p><%= @board.content %></p>
+    <% if @responses[0] %>
+      <% count = 0 %>
+      <% @responses.each do |responce| %>
+      <div class="response">
+        <% count += 1 %>
+        <%= responce.content %>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="response_form">
+    <div class="sub_title">
+      <h3>レスを投稿する</h3>
+    </div>
+    <%= form_with(model: @responce, local: true, url: responses_path) do |f| %>
+
+    <div class="hidden_value">
+      <%= f.hidden_field :board_id, value: @board.id%>
+      <%= f.hidden_field :response_number, value: "#{count}" %>
+    </div>
+
+    <div class="responce_content">
+      <%= f.text_area :content %>
+    </div>
+
+    <div class="submit">
+      <%= f.submit '書き込む' %>
+    </div>
   <% end %>
-</div>
-
-<div class="responce_form">
-  <%= form_with(model: @responce, local: true, url: responses_path) do |f| %>
-
-  <div class="hidden_value">
-    <%= f.hidden_field :board_id, value: @board.id%>
-    <%= f.hidden_field :response_number, value: "#{count}" %>
   </div>
 
-  <div class="responce_title">
-    <%= f.label :content %>
-    <%= f.text_field :content %>
-  </div>
-
-  <%= f.submit %>
-<% end %>
 </div>

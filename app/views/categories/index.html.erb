@@ -1,7 +1,14 @@
+<div class="sub_search">
+  <%= form_with(model: Board.new, url: boards_path, method: :get, local: true) do |f| %>
+    <%= f.text_field :title %>
+    <br>
+    <%= f.submit 'スレタイ検索', class: 'search_button' %>
+<% end %>
+</div>
+
 <div class="category_index">
   <% @categories.each do |category| %>
     <div class="category_name">
-
       <%= link_to "#{category.name}", boards_path(search:{category_id: category.id}) %>
     </div>
   <% end %>
@@ -16,12 +23,16 @@
   <% end %>
 </div>
 
-<div class="search">
-  <%= form_with(model: Board.new, url: boards_path, method: :get, local: true) do |f| %>
-  <p>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </p>
-    <%= f.submit '検索', id: 'search_button' %>
-<% end %>
+<div class="guide">
+  <h1>5chクローン</h1>
+
+  <p class="greeting1">巨大掲示板5chクローンへようこそ</p>
+  <p class="greeting2">スレタイ検索もしくはカテゴリーからお好みのスレッドを探してください。</p>
+
+  <div class="main_search">
+    <%= form_with(model: Board.new, url: boards_path, method: :get, local: true) do |f| %>
+      <%= f.text_field :title, placeholder: "キーワードを入力" %>
+      <%= f.submit 'スレタイ検索', class: 'search_button' %>
+  <% end %>
+  </div>
 </div>
