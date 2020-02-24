@@ -21,7 +21,7 @@
         <% count = 0 %>
         <% @boards.each do |board| %>
           <div class="board">
-            <%= link_to board do%>
+            <%= link_to anchor: "#{count}" do%>
               <% count += 1 %>
               <%= count %>
               <%= board.title %>
@@ -32,15 +32,17 @@
     </div>
 
     <div class="board_details">
+      <% send_number = 0%>
       <% @boards.each do |board| %>
         <div class="board_detail">
-          <h2><%= board.title %></h2>
+          <% send_number += 1 %>
+          <h2 ><%= board.title %></h2>
           <% board.responses.last(10).each do |response| %>
             <div class="responses">
               <%= response.content %>
             </div>
           <% end %>
-          <%= link_to "スレッド詳細を確認する", board_path(board.id) %>
+          <%= link_to "スレッド詳細を確認する", board_path(board.id), id: "#{send_number}" %>
           <div class="response_form">
             <div class="sub_title">
               <h3>書き込み欄</h3>
@@ -52,7 +54,7 @@
             </div>
 
             <div class="hidden_value">
-              <%= f.hidden_field :board_id, value: @board.id%>
+              <%= f.hidden_field :board_id, value: board.id%>
               <%= f.hidden_field :response_number, value: "#{count}" %>
             </div>
 
@@ -67,17 +69,21 @@
 
     <div class="board_form">
       <%= form_with(model: @board, local: true) do |f| %>
-      <div class="sub_title">
-        <h2>新規スレッド作成</h2>
-      </div>
+        <div class="sub_title">
+          <h2>新規スレッド作成</h2>
+        </div>
 
-      <div class="submit">
-        <%= f.submit '新規スレッド作成' %>
-      </div>
+        <div class="submit">
+          <%= f.submit '新規スレッド作成' %>
+        </div>
 
-      <div class="board_category">
-        <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) %>
-      </div>
+        <div class="board_category">
+          <% if @category %>
+            <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name, checked: @category.id) %>
+          <% else %>
+            <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) %>
+          <% end %>
+        </div>
 
         <div class="board_title">
           <%= f.label :スレッドタイトル： %>
@@ -87,9 +93,9 @@
         <div class="board_content">
           <%= f.text_area :content %>
         </div>
-
       <% end %>
     </div>
+
     <div class="under_blank">
     </div>
   </div>

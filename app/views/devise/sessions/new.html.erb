@@ -2,7 +2,14 @@
   <div class="login">
     <div class="login_form">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
         <h2>ログイン</h2>
+        <div class="error">
+          <% flash.each do |key, value| %>
+            <%= content_tag(:div, value, class: "#{key}") %>
+          <% end %>
+        </div>
+        
         <div class="field">
           <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス." %>
         </div>

@@ -12,6 +12,7 @@
       <%= link_to "#{category.name}", boards_path(search:{category_id: category.id}) %>
     </div>
   <% end %>
+  <%= link_to 'その他', boards_path(other: true) %>
 </div>
 
 <div class="nav">

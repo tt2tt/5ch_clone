@@ -5,5 +5,6 @@ class Board < ApplicationRecord
   has_many :responses
 
   validates :title, presence: true,  length: { maximum: 100 }
+  # , presence: true
   # validates :content, presence: true,  length: { maximum: 500 }
 end
