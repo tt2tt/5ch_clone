@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'top#top'
+  root to: 'categories#index'
   get 'top/top'
   resources :categories, only: [:index]
   resources :boards, only: [:index, :show, :create]

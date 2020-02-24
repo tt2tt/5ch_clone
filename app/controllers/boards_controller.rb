@@ -5,6 +5,7 @@ class BoardsController < ApplicationController
       # @boards = Board.where(category_id: params[:search][:category_id])
       @boards = @category.boards
       @board = Board.new
+      @response = Response.new
     elsif params[:board]
       search_word = params[:board][:title]
       search_by_boards1 = Board.where(['title LIKE ?', "%#{search_word}%"])
@@ -13,8 +14,14 @@ class BoardsController < ApplicationController
       search_by_boards2 = Board.find(search_ids)
       @boards = search_by_boards1 + search_by_boards2
       @boards.uniq
+      @response = Response.new
+      @board = Board.new
       # binding.pry
       # @boards = Board.where(['title LIKE ?', "%#{search_word}%"])
+    elsif params[:other]
+      @boards = Board.left_joins(:categories).select("boards.*").where("categories.name is null")
+      @response = Response.new
+      @board = Board.new
     else
       @boards = Board.all
     end
@@ -30,9 +37,9 @@ class BoardsController < ApplicationController
 	  if current_user
       @board = current_user.boards.build(board_params)
       if @board.save
-        redirect_to categories_path
+        redirect_to @board
       else
-        redirect_to categories_path
+        redirect_to root_path, flash: {error_messages: @board.errors.full_messages.join(';')}
       end
     else
       redirect_to user_session_path

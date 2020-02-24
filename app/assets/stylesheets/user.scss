@@ -1,0 +1,55 @@
+// sign_up
+.sign_up{
+  height: 380px;
+  width: 500px;
+  border: 1px solid #000;
+  position: absolute;
+  top: 200px;
+  left: 500px;
+  background-color: #fff;
+  // margin-top: 40px;
+  // margin-left: 400px;
+}
+.sign_up_form{
+  margin-top: 40px;
+  margin-left: 140px;
+}
+.sign_up .actions{
+  margin-top: 25px;
+  margin-left: 2px;
+}
+.sign_up .link{
+  margin-top: 20px;
+  margin-left: 70px;
+}
+
+// login
+.error{
+  margin-left: -50px;
+}
+.login{
+  height: 330px;
+  width: 500px;
+  border: 1px solid #000;
+  position: absolute;
+  top: 200px;
+  left: 500px;
+  background-color: #fff;
+  // margin-top: 100px;
+  // margin-left: 400px;
+}
+.login_form{
+  margin-top: 40px;
+  margin-left:200px;
+}
+.login_form .field{
+  margin-left: -50px;
+}
+.login .actions{
+  margin-top: 25px;
+  margin-left: -47px;
+}
+.login .link{
+  margin-top: 20px;
+  margin-left: 20px;
+}

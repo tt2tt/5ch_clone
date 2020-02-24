@@ -11,9 +11,17 @@
   width: 500px;
   height: 500px;
   margin-top: 100px;
-  margin-left: 475px;
+  margin-left: -20px;
 }
 .top .header h2{
+  float: left;
+  margin-top: 10px;
+}
+.top .header input[type="text"]{
+  width: 200px;
+}
+.top .header input[type="submit"]{
+  width: 100px;
 }
 .top .main{
   height: 615px;
@@ -21,4 +29,10 @@
 }
 .top .footer{
   height: 75px;
+}
+.top .search{
+  float: left;
+}
+.top .search p{
+  margin-left: 20px;
 }
