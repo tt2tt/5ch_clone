@@ -39,7 +39,15 @@
           <h2 ><%= board.title %></h2>
           <% board.responses.last(10).each do |response| %>
             <div class="responses">
-              <%= response.content %>
+              <p>
+                <%= response.response_number %>
+                <span class="user_name"><%= "#{response.user.name}" %></span>
+                <%= response.content %>
+                <%= response.created_at.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[response.created_at.wday]})") %>
+              </p>
+              <p>
+                <%= response.content %>
+              </p>
             </div>
           <% end %>
           <%= link_to "スレッド詳細を確認する", board_path(board.id), id: "#{send_number}" %>
@@ -54,8 +62,9 @@
             </div>
 
             <div class="hidden_value">
+              <% response_number = board.responses.count + 1 %>
               <%= f.hidden_field :board_id, value: board.id%>
-              <%= f.hidden_field :response_number, value: "#{count}" %>
+              <%= f.hidden_field :response_number, value: "#{response_number}" %>
             </div>
 
             <div class="responce_content">

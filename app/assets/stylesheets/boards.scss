@@ -164,8 +164,17 @@
   // margin-top: 3px;
   margin-left: 0px;
 }
+.response_index .response{
+  background-color: #DDD;
+}
+.response_index .response p{
+  word-wrap: normal;
+}
 .responce_index h2{
   margin-top: 0;
+}
+.back_gray .response_index .user_name{
+  color: #008000;
 }
 .back_gray .response_form{
   margin-left: 350px;
