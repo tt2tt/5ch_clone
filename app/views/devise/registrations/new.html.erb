@@ -7,6 +7,10 @@
         <h2>アカウント登録</h2>
 
         <div class="field">
+          <%= f.text_field :name, autofocus: true, placeholder: "名前"  %>
+       </div>
+
+        <div class="field">
           <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス." %>
         </div>
 

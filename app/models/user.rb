@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :boards
   has_many :responses
+
+  validates :name, presence: true,  length: { maximum: 30 }
 end
