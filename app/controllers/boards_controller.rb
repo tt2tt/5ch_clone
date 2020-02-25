@@ -1,27 +1,22 @@
 class BoardsController < ApplicationController
   def index
+    @board = Board.new
+    @response = Response.new
     if params[:search]
       @category = Category.find(params[:search][:category_id])
-      # @boards = Board.where(category_id: params[:search][:category_id])
       @boards = @category.boards
-      @board = Board.new
-      @response = Response.new
     elsif params[:board]
       search_word = params[:board][:title]
-      search_by_boards1 = Board.where(['title LIKE ?', "%#{search_word}%"])
-      search_by_responses = Response.where(['content LIKE ?', "%#{search_word}%"])
-      search_ids = search_by_responses.pluck(:board_id).uniq
-      search_by_boards2 = Board.find(search_ids)
-      @boards = search_by_boards1 + search_by_boards2
-      @boards.uniq
-      @response = Response.new
-      @board = Board.new
-      # binding.pry
-      # @boards = Board.where(['title LIKE ?', "%#{search_word}%"])
+      response_id = Response.search_responses(search_word)
+
+      boards1 = Board.search_title(search_word)
+      boards2 = Board.search_content(search_word)
+      boards3 = Board.find(response_id)
+
+      @boards = boards1 + boards2 + boards3
+      @boards = @boards.uniq
     elsif params[:other]
-      @boards = Board.left_joins(:categories).select("boards.*").where("categories.name is null")
-      @response = Response.new
-      @board = Board.new
+      @boards = Board.other
     else
       @boards = Board.all
     end

@@ -10,13 +10,10 @@
 .above{
   height: 140px;
   background-color: #FFE;
-  // margin-left: 80px;
   margin-bottom: 20px;
   position: relative;
 }
 .above .search{
-  // margin-top: -50px;
-  // margin-left: 400px;
   position: absolute;
   top: 110px;
   left: 480px;
@@ -37,9 +34,6 @@
 }
 .board_index{
   width: 1350px;
-  // position: absolute;
-  // margin-top: -150px;
-  // padding-top: 150px;
   margin-left: 80px;
   top: 150px;
   left: 80px;
@@ -91,7 +85,6 @@
 .board_details .response_form h3{
   width: 100px;
   color: #FFF;
-  // margin-left: 30px;
   margin-bottom: 0px;
   background-color: #39F;
   border-radius: 15px;
@@ -110,13 +103,10 @@
   color: #FFF;
   background-color: #39F;
   border-radius: 15px;
-  // padding-top: 10px;
-  // margin-top: 10px;
   margin-left: 5px;
   margin-bottom: 0px;
 }
 .board_form .sub_title{
-  // height: 5px;
   padding-top: 2px;
 }
 .board_form .submit input[type="submit"]{
@@ -157,11 +147,9 @@
 }
 .back_gray .search input[type="submit"]{
   width: 100px;
-  // margin-left: 30px;
 }
 .back_gray .above .title a{
   font-size: 24px;
-  // margin-top: 3px;
   margin-left: 0px;
 }
 .response_index .response{
